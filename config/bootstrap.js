@@ -63,6 +63,10 @@ module.exports.bootstrap = async function(done) {
     { emailAddress: 'admin@example.com', fullName: 'Ryan Dahl', isSuperAdmin: true, password: await sails.helpers.passwords.hashPassword('abc123') },
   ]);
 
+  await Song.createEach([
+    { filePath: 'filePath', name: 'name', author: 'author', imgUrl: 'imgUrl' },
+  ]);
+
   // Save new bootstrap version
   await sails.helpers.fs.writeJson.with({
     destination: bootstrapLastRunInfoPath,

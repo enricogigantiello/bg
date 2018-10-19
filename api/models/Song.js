@@ -13,7 +13,26 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
+    fileName: {
+      type: 'string',
+      required: true,
+    },
 
+    filePath: {
+      type: 'string',
+    },
+
+    name: {
+      type: 'string',
+    },
+
+    author: {
+      type: 'string',
+    },
+
+    imgUrl: {
+      type: 'string',
+    }
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
@@ -26,4 +45,3 @@ module.exports = {
   },
 
 };
-
