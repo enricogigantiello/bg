@@ -33,6 +33,9 @@ module.exports.routes = {
   'GET /account':            { action: 'account/view-account-overview' },
   'GET /account/password':   { action: 'account/view-edit-password' },
   'GET /account/profile':    { action: 'account/view-edit-profile' },
+
+
+  'GET /songs/list':    { action: 'song/view-songs' },
   'GET /songs':                { view:   'pages/songs' },
   'GET /songs2':              { action: 'Song/list' },
   'GET /songs3':            { action: 'song/view-songs' },

@@ -6,10 +6,13 @@
  */
 
 var path = require('path'), fs=require('fs');
+const NodeID3 = require('node-id3')
 
 function fromDir(startPath,filter){
 
     //console.log('Starting from dir '+startPath+'/');
+
+    var filenames = [];
 
     if (!fs.existsSync(startPath)){
         console.log("no dir ",startPath);
@@ -25,8 +28,11 @@ function fromDir(startPath,filter){
         }
         else if (filename.indexOf(filter)>=0) {
             console.log('-- found: ',filename);
+            filenames.push(filename)
         };
     };
+
+    return filenames;
 };
 
 module.exports = {
@@ -56,11 +62,13 @@ module.exports = {
     // .then(() => {
     //   return Song.find()
     // })
-    fromDir('./api', '.js' )
+    var result = fromDir('/Users/enrico/Downloads', '.mp3')
+    console.log(result);
+    let tags = NodeID3.read(result[0])
+    console.log(tags);
     return Song.find()
-
     .then(function(songs) {
-      res.json(200, songs);
+      res.status(200).json(songs)
     });
   }
 };
