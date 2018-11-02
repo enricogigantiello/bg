@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import {Row, Col, Button, Image} from 'react-bootstrap';
+import {Row, Col, Button, Image, Grid} from 'react-bootstrap';
 import SongsCarouselElement from './SongsCarouselElement.js';
 
 
@@ -23,18 +23,19 @@ export default class SongsCarousel extends Component {
     console.log(songsByLetter);
 
     return (
-      <div>
+      <Row>
         { Object.keys(songsByLetter).map((letter, idx) =>
-          <div className="carousel" key={letter}>
+          <div className="carousel" key={letter + idx}>
             <div className="carousel-row">
+              <h2>{letter}</h2>
               {
-                songsByLetter[letter].map(song => <SongsCarouselElement song={song} />)
+                songsByLetter[letter].map((song, idx2) => <SongsCarouselElement key={song._id + idx2} song={song} />)
               }
             </div>
           </div>
 
         )}
-      </div>
+      </Row>
     );
   }
 }

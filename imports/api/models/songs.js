@@ -16,8 +16,8 @@ if (Meteor.isServer) {
   function fromDir(startPath,filter){
     var filenames = [];
     if (!fs.existsSync(startPath)){
-        console.log("no dir ",startPath);
-        return;
+      console.log("no dir ",startPath);
+      return;
     }
     var files=fs.readdirSync(startPath);
     for(var i=0;i<files.length;i++){
@@ -53,16 +53,20 @@ if (Meteor.isServer) {
         song.requestCount = 0;
         song.lastRequest = '';
         song.createdAt = new Date();
-        var image = false;
+        var image = '';
         fileImages.forEach(path => {
           var imageTitle = path.split('\\').pop().split('/').pop().split('.')[0];
           if (imageTitle === song.fullTitle) image = imageTitle;
         })
-        song.imageUrl = image ? `/${image}.jpg`: '/bg.jpg';
-        console.log(image);
+        song.imageUrl = image !== '' ? `/${image}.jpg`: '/bg.jpg';
+        console.log('IMAGE', image);
+        image = image.replace("%20", " ");
+        console.log('IMAGE', image);
 
         newsongs.push(song);
       });
+      console.log(newsongs);
+
       newsongs.forEach(song => {
         Songs.insert(song);
       })
@@ -95,22 +99,15 @@ if (Meteor.isServer) {
           newsongs.push(song);
           }
         }
-      //
-
       newsongs.forEach(fakesong => {
         Songs.insert(fakesong);
       })
-
     },
-
-
   });
-
 }
 
+
 Meteor.methods({
-
-
   'songs.insert'(title) {
     check(title, String);
     // Make sure the user is logged in before inserting a song

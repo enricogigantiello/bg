@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
-import {Row, Col, Button, Grid} from 'react-bootstrap';
+import {Row, Col, Button, Grid, Image} from 'react-bootstrap';
 import { withTracker } from 'meteor/react-meteor-data';
 
 // models
@@ -94,7 +94,13 @@ class List extends Component {
   render() {
     return (
       <Grid>
-        <button onClick={this.handleToggleView.bind(this)}>VIEW</button>
+        <Row >
+          <div className="center">
+            <img src={'/bg-black.jpg'} alt="Smiley face" height="140" width="140" />
+          </div>
+        </Row>
+        {// <button onClick={this.handleToggleView.bind(this)}>VIEW</button>
+        }
         { !this.state.showTiles &&
           <div>
             <header>
