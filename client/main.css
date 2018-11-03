@@ -1,13 +1,11 @@
+
+
+
+
+@import url(//fonts.googleapis.com/css?family=UnifrakturMaguntia);
+
 /* CSS declarations go here */
 body {
-  font-family: sans-serif;
-  /*background-image: url(bg.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 50% 50%;*/
-  /*background-color: #315481;
-  background-image: linear-gradient(to bottom, #315481, #918e82 100%);
-  background-attachment: fixed;*/
   background-color: #333333 !important;
   position: absolute;
   top: 0;
@@ -17,7 +15,8 @@ body {
   padding: 0;
   margin: 0;
   color: white !important;
-  font-family: 'Cinzel Decorative';
+  font-family: 'UnifrakturMaguntia';
+  font-style: normal;
   font-size: 14px;
 
 }

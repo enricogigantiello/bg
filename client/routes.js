@@ -8,6 +8,7 @@ import AppContainer from '../imports/containers/App.js';
 import HomeContainer from '../imports/containers/Home.js';
 import LoginContainer from '../imports/containers/Login.js';
 import ListContainer from '../imports/containers/List.js';
+import CarouselContainer from '../imports/containers/Carousel.js';
 
 
 
@@ -20,9 +21,9 @@ export const renderRoutes = () => {
   return (
     <Router history={browserHistory}>
       <Switch>
-        <Route exact path="/app" component={AppContainer}/>
-        <Route exact path="/home" component={HomeContainer}/>
         <Route exact path="/list" component={ListContainer}/>
+        <Route exact path="/home" component={HomeContainer}/>
+        <Route exact path="/carousel" component={CarouselContainer}/>
         <Route exact path="/" component={LoginContainer}/>
       </Switch>
     </Router>

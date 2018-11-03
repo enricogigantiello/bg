@@ -59,14 +59,10 @@ if (Meteor.isServer) {
           if (imageTitle === song.fullTitle) image = imageTitle;
         })
         song.imageUrl = image !== '' ? `/${image}.jpg`: '/bg.jpg';
-        console.log('IMAGE', image);
         image = image.replace("%20", " ");
-        console.log('IMAGE', image);
 
         newsongs.push(song);
       });
-      console.log(newsongs);
-
       newsongs.forEach(song => {
         Songs.insert(song);
       })

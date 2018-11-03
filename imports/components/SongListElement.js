@@ -26,10 +26,7 @@ export default class SongListElement extends Component {
     return (
       <li className={songClassName} >
         <Row onClick={this.requestSong.bind(this)}>
-          <Col xs={4}>
-            <Image src={this.props.song.imageUrl} rounded responsive />
-          </Col>
-          <Col xs={4}>
+          <Col xs={8}>
             <span className="title">
               <strong>{this.props.song.artist}</strong> : {this.props.song.title}
               <br/>

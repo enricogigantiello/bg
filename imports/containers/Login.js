@@ -28,19 +28,23 @@ class Login extends Component {
     }
     return (
       <div>
-
+        <Row >
+          <div className="center">
+            <img src={'/bg-black.jpg'} alt="Smiley face" height="140" width="140" />
+          </div>
+        </Row>
         <Row className="login">
           <Col xs={6} xsOffset={3}>
             <h2>Tras</h2>
             <Row>
               <Col xs={4}>
-                <Button onClick={this.loadView.bind(this, 'app')}>Uncino</Button>
+                <Button onClick={this.loadView.bind(this, 'list')}>Uncino</Button>
               </Col>
               <Col xs={4}>
                 <Button onClick={this.loadView.bind(this, 'home')}>Massone</Button>
               </Col>
               <Col xs={4}>
-                <Button onClick={this.loadView.bind(this, 'list')}>Sala</Button>
+                <Button onClick={this.loadView.bind(this, 'carousel')}>Sala</Button>
               </Col>
             </Row>
           </Col>

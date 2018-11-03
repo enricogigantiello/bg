@@ -14,7 +14,7 @@
       --carousel-tile-height:  calc(var(--carousel-tile-width) / (16 / 9));
 
       /* Growth Factor */
-      --carousel-growth-factor: 1.7;
+      --carousel-growth-factor: 1.3;
 
       /* Fade to Opacity */
       --carousel-fade-opacity:   0.25;
@@ -44,11 +44,16 @@
 /* Carousel Row */
 .carousel-row {
       white-space: nowrap;
-      margin-top: calc((var(--carousel-tile-height) * (var(--carousel-growth-factor) - 1)) / 2);
-      margin-bottom: calc((var(--carousel-tile-height) * (var(--carousel-growth-factor) - 1)) / 2);
-      margin-left: calc((var(--carousel-tile-width) * (var(--carousel-growth-factor) - 1)) / 2);
+      margin-top: calc((var(--carousel-tile-height) * (var(--carousel-growth-factor) - 1)) / 3);
+      margin-bottom: calc((var(--carousel-tile-height) * (var(--carousel-growth-factor) - 1)) / 3);
+      margin-left: calc((var(--carousel-tile-width) * (var(--carousel-growth-factor) - 1)) / 3);
       margin-right: calc((var(--carousel-tile-width) * (var(--carousel-growth-factor) - 1)) / 2);
       transition: var(--carousel-transition-2);
+}
+
+/* Carousel Title */
+.carousel-title {
+  margin-left: 3%;
 }
 
 /* Content Tile */
@@ -73,11 +78,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 130%;
-  color: white;
-  mix-blend-mode: difference;
+  font-size: 140%;
+  word-wrap: break-word;
+  /*mix-blend-mode: difference;*/
   text-align: center;
-  font-style: bold
+  font-weight: bold;
+  background-color: #35717dbd;
+
 }
 
 
@@ -91,8 +98,11 @@
 /* Top left text */
 .carousel-tile-top-left {
     position: absolute;
+    /*mix-blend-mode: difference;*/
+    font-style: bold;
     top: 8px;
     left: 16px;
+    background-color: #35717dbd;
 }
 
 /* Top right text */
@@ -105,8 +115,24 @@
 /* Bottom right text */
 .carousel-tile-bottom-right {
     position: absolute;
+    color: #eb9d0f;
+    font-size: 180%;
+
+    /*mix-blend-mode: difference;*/
     bottom: 8px;
     right: 16px;
+}
+
+.animate-heart {
+    animation: play 1s steps(1000);
+}
+.heart {
+    font-size: 0%;
+    color: #eb9d0f
+}
+@keyframes play {
+    from { font-size:    0%; color: #eb9d0f }
+    to { font-size: 485%; color: #eb9d0f }
 }
 
 /* Add Extra Margin to Last Carousel Tile */
@@ -141,4 +167,10 @@
 .carousel-tile:hover ~ .carousel-tile {
       -webkit-transform: translate3d(var(--carousel-offset-right), 0, 0);
       transform: translate3d(var(--carousel-offset-right), 0, 0);
+}
+
+.wordWrap {
+    word-wrap: break-word;      /* IE 5.5-7 */
+    white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+    white-space: pre-wrap;      /* current browsers */
 }

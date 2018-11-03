@@ -27,7 +27,7 @@ export default class SongsCarousel extends Component {
         { Object.keys(songsByLetter).map((letter, idx) =>
           <div className="carousel" key={letter + idx}>
             <div className="carousel-row">
-              <h2>{letter}</h2>
+              <h2 className="carousel-title">{letter}</h2>
               {
                 songsByLetter[letter].map((song, idx2) => <SongsCarouselElement key={song._id + idx2} song={song} />)
               }
