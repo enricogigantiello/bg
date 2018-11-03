@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import classnames from 'classnames';
-import {Row, Col, Button, Image} from 'react-bootstrap';
+import {Row, Col, Button, Image, Glyphicon} from 'react-bootstrap';
 import { Songs } from '../api/models/songs.js';
 
 // Song component - represents a single song item
@@ -25,16 +25,19 @@ export default class SongListElement extends Component {
     });
     return (
       <li className={songClassName} >
-        <Row onClick={this.requestSong.bind(this)}>
-          <Col xs={8}>
-            <span className="title">
-              <strong>{this.props.song.artist}</strong> : {this.props.song.title}
-              <br/>
-              {this.props.song.fullTitle}
+        <Row>
+          <Col xs={9}>
+            <Glyphicon glyph="user" />
+            <span className="song-artist">
+              <strong>{this.props.song.artist}</strong>
+            </span>
+            <Glyphicon glyph="music" />
+            <span className="song-title">
+              {this.props.song.title}
             </span>
           </Col>
-          <Col xs={4}>
-          {this.props.song.requestCount}
+          <Col xs={3}>
+            <span className="song-count">{this.props.song.requestCount}</span>
           </Col>
         </Row>
         {
