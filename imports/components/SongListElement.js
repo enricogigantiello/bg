@@ -27,14 +27,18 @@ export default class SongListElement extends Component {
       <li className={songClassName} >
         <Row>
           <Col xs={9}>
-            <Glyphicon glyph="user" />
-            <span className="song-artist">
-              <strong>{this.props.song.artist}</strong>
-            </span>
-            <Glyphicon glyph="music" />
-            <span className="song-title">
-              {this.props.song.title}
-            </span>
+            <div>
+              <Glyphicon glyph="user" />
+              <span className="song-artist">
+                <strong>{this.props.song.artist}</strong>
+              </span>
+            </div>
+            <div>
+              <Glyphicon glyph="music" />
+              <span className="song-title">
+                {this.props.song.title}
+              </span>
+            </div>
           </Col>
           <Col xs={3}>
             <span className="song-count">{this.props.song.requestCount}</span>
