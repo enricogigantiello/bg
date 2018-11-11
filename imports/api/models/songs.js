@@ -52,6 +52,8 @@ if (Meteor.isServer) {
         song.artistStartsWith = song.artist ? song.artist[0].toUpperCase() : '';
         song.requestCount = 0;
         song.lastRequest = '';
+        song.played = false;
+        song.lastPlayed = '';
         song.createdAt = new Date();
         var image = '';
         fileImages.forEach(path => {
@@ -147,6 +149,13 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
     Songs.update(songId, { $set: { private: setToPrivate } });
+  },
+
+  'songs.togglePlayed'(songId, played) {
+    check(songId, String);
+    const song = Songs.findOne(songId);
+
+    Songs.update(songId, { $set: { played: !played, lastPlayed: new Date()  } });
   },
 
   'songs.titleStartsWith'(startingLetter) {

@@ -15,7 +15,8 @@
     "react": "^16.6.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.0",
-    "react-router": "^4.3.1"
+    "react-router": "^4.3.1",
+    "string-similarity": "^2.0.0"
   },
   "meteor": {
     "mainModule": {

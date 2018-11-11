@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import {Row, Col, Button, Grid, Image} from 'react-bootstrap';
 import { withTracker } from 'meteor/react-meteor-data';
-
+import { ReactiveVar } from 'meteor/reactive-var'
 // models
 import { Songs } from '../api/models/songs.js';
 
@@ -21,7 +21,9 @@ class Carousel extends Component {
     this.state = {
       hideCompleted: false,
       filterInitialLetter: false,
-      showTiles: true
+      showTiles: true,
+      searchActive: false,
+      searchWord: ''
     };
   }
 
@@ -47,6 +49,16 @@ class Carousel extends Component {
     this.setState({
       filterInitialLetter: letter
     })
+  }
+
+  handleSearch(event, text) {
+    event.preventDefault();
+    var searchActive = event.target.value !== '';
+    this.setState({
+      searchActive: searchActive,
+      searchWord: event.target.value
+    })
+
   }
 
 
@@ -81,11 +93,28 @@ class Carousel extends Component {
   }
 
   render() {
+    let filteredSongs = this.props.songs;
+    if (this.state.searchActive) {
+      const {
+        searchWord
+      } = this.state;
+      console.log(searchWord);
+      filteredSongs = filteredSongs.filter(song => {
+        return song.fullTitle.toLowerCase().includes(searchWord.toLowerCase());
+      })
+    }
+
     return (
       <Grid>
-        { this.state.showTiles &&
+        <input className="search" type="text" onChange={this.handleSearch.bind(this)} />
+        { !this.state.searchActive &&
 
-          <SongsCarousel songs={this.props.songs} />
+          <SongsCarousel songs={filteredSongs} />
+
+        }
+        { this.state.searchActive &&
+
+          <SongsCarousel songs={filteredSongs} />
 
         }
 
@@ -98,7 +127,5 @@ export default withTracker(() => {
   Meteor.subscribe('songs');
   return {
     songs: Songs.find({}, { sort: { fullTitle: 1 } }).fetch(),
-    incompleteCount: Songs.find({ checked: { $ne: true } }).count(),
-    currentUser: Meteor.user(),
   };
 })(Carousel);

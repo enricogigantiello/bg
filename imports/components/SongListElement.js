@@ -6,27 +6,20 @@ import { Songs } from '../api/models/songs.js';
 
 // Song component - represents a single song item
 export default class SongListElement extends Component {
-  requestSong() {
-    // Set the checked property to the opposite of its current value
-    Meteor.call('songs.request', this.props.song._id, this.props.song.requestCount);
-  }
 
-  deleteSong() {
-    Meteor.call('songs.remove', this.props.song._id);
-  }
-
-  togglePrivate() {
-    Meteor.call('songs.setPrivate', this.props.song._id, ! this.props.song.private);
+  togglePlayed() {
+    Meteor.call('songs.togglePlayed', this.props.song._id, this.props.song.played);
   }
 
   render() {
     const songClassName = classnames({
       song: true,
+      playedsong: this.props.song.played,
     });
     return (
-      <li className={songClassName} >
+      <li className={songClassName} onClick={this.togglePlayed.bind(this)} >
         <Row>
-          <Col xs={9}>
+          <Col xs={8}>
             <div>
               <Glyphicon glyph="user" />
               <span className="song-artist">
@@ -40,7 +33,7 @@ export default class SongListElement extends Component {
               </span>
             </div>
           </Col>
-          <Col xs={3}>
+          <Col xs={2}>
             <span className="song-count">{this.props.song.requestCount}</span>
           </Col>
         </Row>
@@ -57,9 +50,9 @@ export default class SongListElement extends Component {
         // />
         }
         {
-        //   this.props.showPrivateButton ? (
-        //   <button className="toggle-private" onClick={this.togglePrivate.bind(this)}>
-        //     { this.props.song.private ? 'Private' : 'Public' }
+        //   this.props.showPlayedButton ? (
+        //   <button className="toggle-private" onClick={this.togglePlayed.bind(this)}>
+        //     { this.props.song.private ? 'Played' : 'Public' }
         //   </button>
         // ) : ''
         }

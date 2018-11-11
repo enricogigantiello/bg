@@ -102,9 +102,9 @@ li {
   animation: mymove 5s;
 }*/
 
-/*li .title {
-  margin-left: 10px;
-}*/
+.playedsong {
+  background-color: #336f78;
+}
 
 li.checked {
   animation: mymove 5s;
@@ -227,4 +227,24 @@ header .hide-completed {
   border-color: #306d7fbd transparent #306d7fbd #306d7fbd;
   top:0.7em;
   right:-2.3em;
+}
+
+/*Search bar*/
+.search {
+  color: black;
+}
+.searchbar {
+  height:17px;
+  border: 0;
+  width: 100%;
+  background-color: transparent;
+  margin-left:1px;
+  box-shadow: -8px 10px 0px -7px white, 8px 10px 0px -7px white;
+  -webkit-transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s;
+  color: red;
+}
+.searchbar:focus {
+  outline: none;
+  box-shadow: -8px 10px 0px -7px #4EA6EA, 8px 10px 0px -7px #4EA6EA;
 }
